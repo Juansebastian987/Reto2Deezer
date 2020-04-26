@@ -22,7 +22,6 @@ public class PlayList_Song extends AppCompatActivity implements View.OnClickList
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_play_list);
 
-
         listSong = new ArrayList<>();
         recyclerSong = (RecyclerView) findViewById(R.id.idRecyclerViewSong);
         recyclerSong.setLayoutManager(new LinearLayoutManager(this));
