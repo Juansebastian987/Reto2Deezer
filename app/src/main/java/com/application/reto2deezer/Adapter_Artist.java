@@ -12,32 +12,32 @@ import java.util.ArrayList;
 
 public class Adapter_Artist extends RecyclerView.Adapter<Adapter_Artist.ViewHolderArtist> implements View.OnClickListener{
 
-    ArrayList<Artist> listaPersonajes;
+    ArrayList<Artist> listArtist;
     private View.OnClickListener listener;
-    private OnNoteListener onNoteListener;
+    private OnArtistListener onArtistListener;
 
-    public Adapter_Artist(ArrayList<Artist> listaPersonajes, OnNoteListener onNoteListener) {
-        this.listaPersonajes = listaPersonajes;
-        this.onNoteListener = onNoteListener;
+    public Adapter_Artist(ArrayList<Artist> listArtist, OnArtistListener onArtistListener) {
+        this.listArtist = listArtist;
+        this.onArtistListener = onArtistListener;
     }
 
     @Override
     public ViewHolderArtist onCreateViewHolder(ViewGroup parent, int viewType) {
         View view= LayoutInflater.from(parent.getContext()).inflate(R.layout.iem_list_personajes,null,false);
-        return new ViewHolderArtist(view, onNoteListener);
+        return new ViewHolderArtist(view, onArtistListener);
     }
 
     @Override
     public void onBindViewHolder(ViewHolderArtist holder, int position) {
-        holder.etiNombre.setText(listaPersonajes.get(position).getNombre());
-        holder.etiInformacion.setText(listaPersonajes.get(position).getInfo());
-        holder.foto.setImageResource(listaPersonajes.get(position).getFoto());
-        holder.numberItems.setText(listaPersonajes.get(position).getnItems());
+        holder.etiNombre.setText(listArtist.get(position).getNombre());
+        holder.etiInformacion.setText(listArtist.get(position).getInfo());
+        holder.foto.setImageResource(listArtist.get(position).getFoto());
+        holder.numberItems.setText(listArtist.get(position).getnItems());
     }
 
     @Override
     public int getItemCount() {
-        return listaPersonajes.size();
+        return listArtist.size();
     }
 
     public void setOnClickListener(View.OnClickListener listener){
@@ -55,26 +55,26 @@ public class Adapter_Artist extends RecyclerView.Adapter<Adapter_Artist.ViewHold
 
         TextView etiNombre,etiInformacion, numberItems;
         ImageView foto;
-        OnNoteListener onNoteListener;
+        OnArtistListener onArtistListener;
 
-        public ViewHolderArtist(View itemView, OnNoteListener onNoteListener) {
+        public ViewHolderArtist(View itemView, OnArtistListener onArtistListener) {
             super(itemView);
             etiNombre= (TextView) itemView.findViewById(R.id.idNombre);
             etiInformacion= (TextView) itemView.findViewById(R.id.idInfo);
             numberItems = (TextView) itemView.findViewById(R.id.idItems);
             foto= (ImageView) itemView.findViewById(R.id.idImagen);
-            this.onNoteListener = onNoteListener;
+            this.onArtistListener = onArtistListener;
             itemView.setOnClickListener(this);
         }
 
         @Override
         public void onClick(View v) {
-            onNoteListener.OnNoteClick(getAdapterPosition());
+            onArtistListener.OnArtistClick(getAdapterPosition());
         }
     }
 
-    public interface OnNoteListener{
-        void OnNoteClick(int position);
+    public interface OnArtistListener{
+        void OnArtistClick(int position);
     }
 
 }

@@ -13,6 +13,13 @@ public class Song{
     public Song(){
     }
 
+    public Song(String nameSong, String nameArtist, String releaseDate, int photoSong) {
+        this.nameSong = nameSong;
+        this.nameArtist = nameArtist;
+        this.releaseDate = releaseDate;
+        this.photoSong = photoSong;
+    }
+
     public String getNameSong() {
         return nameSong;
     }
