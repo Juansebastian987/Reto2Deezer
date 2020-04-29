@@ -8,16 +8,19 @@ import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
+
 import java.util.ArrayList;
 
-public class Adapter_Artist extends RecyclerView.Adapter<Adapter_Artist.ViewHolderArtist> implements View.OnClickListener{
+public class Adapter_Album extends RecyclerView.Adapter<Adapter_Album.ViewHolderArtist> implements View.OnClickListener{
 
-    ArrayList<Artist> listArtist;
+    ArrayList<Album> listAlbum;
     private View.OnClickListener listener;
     private OnArtistListener onArtistListener;
+    private View view;
 
-    public Adapter_Artist(ArrayList<Artist> listArtist, OnArtistListener onArtistListener) {
-        this.listArtist = listArtist;
+    public Adapter_Album(ArrayList<Album> listAlbum, OnArtistListener onArtistListener) {
+        this.listAlbum = listAlbum;
         this.onArtistListener = onArtistListener;
     }
 
@@ -27,17 +30,26 @@ public class Adapter_Artist extends RecyclerView.Adapter<Adapter_Artist.ViewHold
         return new ViewHolderArtist(view, onArtistListener);
     }
 
+    public View getView() {
+        return view;
+    }
+
+    public void setView(View view) {
+        this.view = view;
+    }
+
     @Override
     public void onBindViewHolder(ViewHolderArtist holder, int position) {
-        holder.etiNombre.setText(listArtist.get(position).getNombre());
-        holder.etiInformacion.setText(listArtist.get(position).getInfo());
-        holder.foto.setImageResource(listArtist.get(position).getFoto());
-        holder.numberItems.setText(listArtist.get(position).getnItems());
+        holder.etiNombre.setText(listAlbum.get(position).getTitle());
+        holder.etiInformacion.setText(listAlbum.get(position).getArtist().getName());
+     //   holder.foto.setImageResource(Integer.parseInt(listAlbum.get(position).getCover()+""));
+        holder.numberItems.setText(listAlbum.get(position).getNb_tracks());
+        Glide.with(holder.foto.getContext()).load(listAlbum.get(position).getCover()).into(holder.foto);
     }
 
     @Override
     public int getItemCount() {
-        return listArtist.size();
+        return listAlbum.size();
     }
 
     public void setOnClickListener(View.OnClickListener listener){
@@ -53,9 +65,9 @@ public class Adapter_Artist extends RecyclerView.Adapter<Adapter_Artist.ViewHold
 
     public class ViewHolderArtist extends RecyclerView.ViewHolder implements View.OnClickListener {
 
-        TextView etiNombre,etiInformacion, numberItems;
-        ImageView foto;
-        OnArtistListener onArtistListener;
+        private TextView etiNombre,etiInformacion, numberItems;
+        private ImageView foto;
+        private OnArtistListener onArtistListener;
 
         public ViewHolderArtist(View itemView, OnArtistListener onArtistListener) {
             super(itemView);
@@ -77,4 +89,27 @@ public class Adapter_Artist extends RecyclerView.Adapter<Adapter_Artist.ViewHold
         void OnArtistClick(int position);
     }
 
+    public ArrayList<Album> getListAlbum() {
+        return listAlbum;
+    }
+
+    public void setListAlbum(ArrayList<Album> listAlbum) {
+        this.listAlbum = listAlbum;
+    }
+
+    public View.OnClickListener getListener() {
+        return listener;
+    }
+
+    public void setListener(View.OnClickListener listener) {
+        this.listener = listener;
+    }
+
+    public OnArtistListener getOnArtistListener() {
+        return onArtistListener;
+    }
+
+    public void setOnArtistListener(OnArtistListener onArtistListener) {
+        this.onArtistListener = onArtistListener;
+    }
 }
