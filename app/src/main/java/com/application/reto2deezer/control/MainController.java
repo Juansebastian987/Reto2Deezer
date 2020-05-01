@@ -1,19 +1,22 @@
 package com.application.reto2deezer.control;
 
+import android.content.Intent;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 
 import com.application.reto2deezer.model.Playlist;
+import com.application.reto2deezer.model.PlaylistContainer;
 import com.application.reto2deezer.util.Constants;
 import com.application.reto2deezer.util.HTTPSWebUtilDomi;
 import com.application.reto2deezer.view.MainActivity;
 import com.google.gson.Gson;
 
-public class MainController implements View.OnClickListener, HTTPSWebUtilDomi.OnResponseListener, AdapterView.OnItemClickListener,
-        AdapterPlaylist.OnPlaylistListener {
+public class MainController implements View.OnClickListener, HTTPSWebUtilDomi.OnResponseListener, AdapterView.OnItemClickListener{
 
     private MainActivity mainActivity;
     private HTTPSWebUtilDomi utilDomi;
+    private Intent intent;
 
     public MainController(MainActivity mainActivity) {
         this.mainActivity = mainActivity;
@@ -38,19 +41,16 @@ public class MainController implements View.OnClickListener, HTTPSWebUtilDomi.On
         switch (callbackID) {
             case Constants.SEARCH_CALLBACK:
                 Gson gson = new Gson();
-                Playlist playlist = gson.fromJson(response, Playlist.class);
+                PlaylistContainer playlist = gson.fromJson(response, PlaylistContainer.class);
                 break;
         }
     }
 
     @Override
     public void onClick(View v) {
-
-    }
-
-    @Override
-    public void OnPlaylistClick(int position) {
-
+        if(v==mainActivity.getImageButton()){
+            Log.e(">>>", "El boton esta siendo clickeado");
+        }
     }
 
     public void searchPlaylist() {

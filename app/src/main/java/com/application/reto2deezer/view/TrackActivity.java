@@ -39,6 +39,7 @@ public class TrackActivity extends AppCompatActivity{
 
         tracks = new ArrayList<>();
         recyclerViewTrack.setLayoutManager(new LinearLayoutManager(this));
+        adapterTrack = new AdapterTrack(this);
         recyclerViewTrack.setAdapter(adapterTrack);
         tracksController = new TracksController(this);
     }

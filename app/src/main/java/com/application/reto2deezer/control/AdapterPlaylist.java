@@ -19,26 +19,18 @@ public class AdapterPlaylist extends RecyclerView.Adapter<AdapterPlaylist.ViewHo
 
     ArrayList<Playlist> listPlaylist;
     private View.OnClickListener listener;
-    private View view;
     private MainActivity mainActivity;
 
-    public AdapterPlaylist(ArrayList<Playlist> listPlaylist,  MainActivity mainActivity) {
-        this.listPlaylist = listPlaylist;
+    public AdapterPlaylist(MainActivity mainActivity) {
         this.mainActivity = mainActivity;
+        listPlaylist = new ArrayList<>();
     }
 
     @Override
     public ViewHolderPlaylist onCreateViewHolder(ViewGroup parent, int viewType) {
         View view= LayoutInflater.from(parent.getContext()).inflate(R.layout.iem_list_personajes,null,false);
+        view.setOnClickListener(this);
         return new ViewHolderPlaylist(view);
-    }
-
-    public View getView() {
-        return view;
-    }
-
-    public void setView(View view) {
-        this.view = view;
     }
 
     @Override
@@ -65,11 +57,10 @@ public class AdapterPlaylist extends RecyclerView.Adapter<AdapterPlaylist.ViewHo
         }
     }
 
-    public class ViewHolderPlaylist extends RecyclerView.ViewHolder implements View.OnClickListener {
+    public class ViewHolderPlaylist extends RecyclerView.ViewHolder{
 
         private TextView etiNombre,etiInformacion, numberItems;
         private ImageView foto;
-        private OnPlaylistListener onPlaylistListener;
 
         public ViewHolderPlaylist(View itemView) {
             super(itemView);
@@ -77,18 +68,8 @@ public class AdapterPlaylist extends RecyclerView.Adapter<AdapterPlaylist.ViewHo
             etiInformacion= (TextView) itemView.findViewById(R.id.idInfo);
             numberItems = (TextView) itemView.findViewById(R.id.idItems);
             foto= (ImageView) itemView.findViewById(R.id.idImagen);
-            this.onPlaylistListener = onPlaylistListener;
-            itemView.setOnClickListener(this);
         }
 
-        @Override
-        public void onClick(View v) {
-            onPlaylistListener.OnPlaylistClick(getAdapterPosition());
-        }
-    }
-
-    public interface OnPlaylistListener {
-        void OnPlaylistClick(int position);
     }
 
     public ArrayList<Playlist> getListPlaylist() {
@@ -107,4 +88,11 @@ public class AdapterPlaylist extends RecyclerView.Adapter<AdapterPlaylist.ViewHo
         this.listener = listener;
     }
 
+    public MainActivity getMainActivity() {
+        return mainActivity;
+    }
+
+    public void setMainActivity(MainActivity mainActivity) {
+        this.mainActivity = mainActivity;
+    }
 }

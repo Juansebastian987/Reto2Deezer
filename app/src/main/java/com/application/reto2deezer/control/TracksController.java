@@ -10,7 +10,7 @@ import com.application.reto2deezer.view.TrackActivity;
 
 import java.util.ArrayList;
 
-public class TracksController implements View.OnClickListener, AdapterTrack.OnTrackListener {
+public class TracksController implements View.OnClickListener{
 
     private  ArrayList<Song> listSong;
     private Intent intent;
@@ -23,11 +23,6 @@ public class TracksController implements View.OnClickListener, AdapterTrack.OnTr
 
     @Override
     public void onClick(View v) {
-
-    }
-
-    @Override
-    public void OnTrackClick(int position) {
 
     }
 

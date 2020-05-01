@@ -36,9 +36,9 @@ public class MainActivity extends AppCompatActivity{
         recyclerPlaylist = (RecyclerView) findViewById(R.id.RecyclerId);
         recyclerPlaylist.setLayoutManager(new LinearLayoutManager(this));
 
-         adapterPlaylist = new AdapterPlaylist(listPlaylist, this);
-         recyclerPlaylist.setAdapter(adapterPlaylist);
-         mainController = new MainController(this);
+        adapterPlaylist = new AdapterPlaylist(this);
+        recyclerPlaylist.setAdapter(adapterPlaylist);
+        mainController = new MainController(this);
     }
 
     public ArrayList<Playlist> getListPlaylist() {
