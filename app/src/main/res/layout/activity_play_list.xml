@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:orientation="horizontal"
     android:layout_height="match_parent"
-    tools:context=".PlayList_Song">
+    tools:context=".view.TrackActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -13,7 +13,7 @@
         android:orientation="vertical">
 
         <ImageView
-            android:id="@+id/imageView3"
+            android:id="@+id/imgPlayListTrack"
             android:layout_width="match_parent"
             android:layout_height="100dp"
             android:layout_marginStart="12dp"
@@ -22,7 +22,7 @@
             app:srcCompat="@drawable/banner" />
 
         <TextView
-            android:id="@+id/namePlaylist"
+            android:id="@+id/namePlaylistTrack"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="12dp"
@@ -32,7 +32,7 @@
             android:textStyle="bold" />
 
         <TextView
-            android:id="@+id/descripcionPlaylist"
+            android:id="@+id/descripcionPlaylistTrack"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="12dp"
@@ -46,7 +46,7 @@
             android:orientation="horizontal">
 
             <TextView
-                android:id="@+id/numberSongsPlaylist"
+                android:id="@+id/numberSongsPlaylistTrack"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="12dp"
@@ -54,7 +54,7 @@
                 android:text="(# Canciones)" />
 
             <TextView
-                android:id="@+id/numberFansPlaylist"
+                android:id="@+id/numberFansPlaylistTrack"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="24dp"
@@ -63,7 +63,7 @@
         </LinearLayout>
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/idRecyclerViewSong"
+            android:id="@+id/recyclerViewTrack"
             android:paddingTop="20dp"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />

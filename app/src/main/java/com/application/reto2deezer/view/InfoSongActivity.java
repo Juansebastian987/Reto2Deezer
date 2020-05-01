@@ -1,10 +1,12 @@
-package com.application.reto2deezer;
+package com.application.reto2deezer.view;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
-public class Info_Song extends AppCompatActivity {
+import com.application.reto2deezer.R;
+
+public class InfoSongActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -1,4 +1,4 @@
-package com.application.reto2deezer;
+package com.application.reto2deezer.control;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,17 +9,20 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.application.reto2deezer.R;
+import com.application.reto2deezer.model.Song;
+
 import java.util.ArrayList;
 
-public class Adapter_Song extends RecyclerView.Adapter<Adapter_Song.ViewHolderSongs> implements View.OnClickListener {
+public class AdapterTrack extends RecyclerView.Adapter<AdapterTrack.ViewHolderSongs> implements View.OnClickListener {
 
     ArrayList<Song> listSong;
     private View.OnClickListener listener;
-    private OnSongListener onSongListener;
+    private OnTrackListener onTrackListener;
 
-    public Adapter_Song(ArrayList<Song> listSong, OnSongListener onSongListener) {
+    public AdapterTrack(ArrayList<Song> listSong, OnTrackListener onTrackListener) {
         this.listSong = listSong;
-        this.onSongListener = onSongListener;
+        this.onTrackListener = onTrackListener;
     }
 
     @Override
@@ -33,7 +36,7 @@ public class Adapter_Song extends RecyclerView.Adapter<Adapter_Song.ViewHolderSo
     @Override
     public ViewHolderSongs onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view= LayoutInflater.from(parent.getContext()).inflate(R.layout.iem_list_songs,null,false);
-        return new ViewHolderSongs(view, onSongListener);
+        return new ViewHolderSongs(view, onTrackListener);
 
     }
 
@@ -53,26 +56,26 @@ public class Adapter_Song extends RecyclerView.Adapter<Adapter_Song.ViewHolderSo
     public class ViewHolderSongs extends RecyclerView.ViewHolder implements View.OnClickListener {
         TextView nombreSong,nameArtist, releaseDate;
         ImageView foto;
-        OnSongListener onSongListener;
+        OnTrackListener onTrackListener;
 
-        public ViewHolderSongs(View itemView, OnSongListener onSongListener) {
+        public ViewHolderSongs(View itemView, OnTrackListener onTrackListener) {
             super(itemView);
             nombreSong= (TextView) itemView.findViewById(R.id.idNombreSong);
             nameArtist= (TextView) itemView.findViewById(R.id.idArtistSong);
             releaseDate = (TextView) itemView.findViewById(R.id.idDateSong);
             foto= (ImageView) itemView.findViewById(R.id.idImagenSong);
-            this.onSongListener = onSongListener;
+            this.onTrackListener = onTrackListener;
             itemView.setOnClickListener(this);
         }
 
         @Override
         public void onClick(View v) {
-            onSongListener.OnSongClick(getAdapterPosition());
+            onTrackListener.OnTrackClick(getAdapterPosition());
         }
     }
 
-    public interface OnSongListener{
-        void OnSongClick(int position);
+    public interface OnTrackListener {
+        void OnTrackClick(int position);
     }
 
 }

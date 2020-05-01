@@ -1,14 +1,14 @@
 package com.application.reto2deezer.model;
 
-public class Artist {
-
+public class User {
     private String name;
 
-    public Artist() {
+    public User(String name) {
+        this.name = name;
     }
 
-    public Artist(String name) {
-        this.name = name;
+    public User() {
+
     }
 
     public String getName() {

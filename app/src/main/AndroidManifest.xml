@@ -11,10 +11,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Song"></activity>
-        <activity android:name=".Info_Song" />
-        <activity android:name=".PlayList_Song" />
-        <activity android:name=".PlayList_Album">
+        <activity android:name=".model.Song"></activity>
+        <activity android:name=".view.InfoSongActivity" />
+        <activity android:name=".view.TrackActivity" />
+        <activity android:name=".view.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

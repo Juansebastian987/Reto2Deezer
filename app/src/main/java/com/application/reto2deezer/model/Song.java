@@ -1,4 +1,4 @@
-package com.application.reto2deezer;
+package com.application.reto2deezer.model;
 
 import androidx.appcompat.app.AppCompatActivity;
 

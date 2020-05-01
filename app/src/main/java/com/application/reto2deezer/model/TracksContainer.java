@@ -2,20 +2,20 @@ package com.application.reto2deezer.model;
 
 public class TracksContainer {
 
-    private DataContainer[] data;
+    private Track[] data;
 
     public TracksContainer() {
     }
 
-    public TracksContainer(DataContainer[] data) {
+    public TracksContainer(Track[] data) {
         this.data = data;
     }
 
-    public DataContainer[] getData() {
+    public Track[] getData() {
         return data;
     }
 
-    public void setData(DataContainer[] data) {
+    public void setData(Track[] data) {
         this.data = data;
     }
 }
