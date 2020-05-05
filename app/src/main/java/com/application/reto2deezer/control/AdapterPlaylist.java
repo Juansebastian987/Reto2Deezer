@@ -13,9 +13,10 @@ import com.application.reto2deezer.model.Playlist;
 import com.application.reto2deezer.view.MainActivity;
 import com.bumptech.glide.Glide;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class AdapterPlaylist extends RecyclerView.Adapter<AdapterPlaylist.ViewHolderPlaylist> implements View.OnClickListener{
+public class AdapterPlaylist extends RecyclerView.Adapter<AdapterPlaylist.ViewHolderPlaylist> implements View.OnClickListener {
 
     private ArrayList<Playlist> listPlaylist;
     private View.OnClickListener listener;

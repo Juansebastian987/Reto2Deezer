@@ -1,6 +1,11 @@
 package com.application.reto2deezer.model;
 
-public class Playlist {
+import android.os.Parcel;
+import android.os.Parcelable;
+
+import java.io.Serializable;
+
+public class Playlist implements Serializable {
 
     private String id;
     private String title;
@@ -88,4 +93,16 @@ public class Playlist {
     public void setTracklist(String tracklist) {
         this.tracklist = tracklist;
     }
+
+    protected Playlist(Parcel in) {
+        id = in.readString();
+        title = in.readString();
+        user = (User) in.readValue(User.class.getClassLoader());
+        description = in.readString();
+        nb_tracks = in.readString();
+        fans = in.readInt();
+        picture = in.readString();
+        tracklist = in.readString();
+    }
+
 }

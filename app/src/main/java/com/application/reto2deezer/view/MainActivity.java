@@ -15,9 +15,10 @@ import com.application.reto2deezer.control.AdapterPlaylist;
 import com.application.reto2deezer.control.MainController;
 import com.application.reto2deezer.model.Playlist;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class MainActivity extends AppCompatActivity implements AdapterPlaylist.OnItemListener {
+public class MainActivity extends AppCompatActivity implements AdapterPlaylist.OnItemListener{
 
     private ArrayList<Playlist> listPlaylist;
     private RecyclerView recyclerPlaylist;
@@ -94,7 +95,13 @@ public class MainActivity extends AppCompatActivity implements AdapterPlaylist.O
     @Override
     public void OnItemListener(int position) {
         Intent i = new Intent(this, TrackActivity.class);
-        i.putExtra("id", getAdapterPlaylist().getListPlaylist().get(position).getId());
+      //  i.putExtra("id", getAdapterPlaylist().getListPlaylist().get(position).getId());
+
+        Bundle bundle = new Bundle();
+        bundle.putSerializable("playlistSelect", getAdapterPlaylist().getListPlaylist().get(position));
+
+        i.putExtras(bundle);
+
         startActivity(i);
     }
 }

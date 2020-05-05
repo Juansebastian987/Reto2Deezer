@@ -13,7 +13,9 @@ import android.widget.TextView;
 import com.application.reto2deezer.R;
 import com.application.reto2deezer.control.AdapterTrack;
 import com.application.reto2deezer.control.TracksController;
+import com.application.reto2deezer.model.Playlist;
 import com.application.reto2deezer.model.Track;
+import com.bumptech.glide.Glide;
 
 import java.util.ArrayList;
 
@@ -29,6 +31,7 @@ public class TrackActivity extends AppCompatActivity{
     private TracksController tracksController;
     private ArrayList<Track> tracks;
     private String id_playlist;
+    private Playlist playlistSelect;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,6 +43,7 @@ public class TrackActivity extends AppCompatActivity{
         numberSongsPlaylistTrack = findViewById(R.id.numberSongsPlaylistTrack);
         numberFansPlaylistTrack = findViewById(R.id.numberFansPlaylistTrack);
         recyclerViewTrack = findViewById(R.id.recyclerViewTrack);
+        imgPlayListTrack = findViewById(R.id.imgPlayListTrack);
 
         tracks = new ArrayList<>();
         recyclerViewTrack.setLayoutManager(new LinearLayoutManager(this));
@@ -47,8 +51,20 @@ public class TrackActivity extends AppCompatActivity{
         recyclerViewTrack.setAdapter(adapterTrack);
 
         Intent datos = getIntent();
-        id_playlist = datos.getStringExtra("id")+"";
-        Log.e(">>>", id_playlist);
+
+        Bundle objetoPlaylist = datos.getExtras();
+        if(objetoPlaylist!=null){
+            playlistSelect = (Playlist) datos.getSerializableExtra("playlistSelect");
+            id_playlist = playlistSelect.getId();
+            namePlaylistTrack.setText(playlistSelect.getTitle());
+            descripcionPlaylistTrack.setText(playlistSelect.getDescription());
+            numberSongsPlaylistTrack.setText("(Con: # "+playlistSelect.getNb_tracks()+" canciones)");
+            numberFansPlaylistTrack.setText("(Con: # "+playlistSelect.getFans()+" fans)");
+            Glide.with(this).load(playlistSelect.getPicture()).into(imgPlayListTrack);
+
+          //  Log.e(">>>", playlistSelect.getDescription());
+
+        }
 
         tracksController = new TracksController(this);
     }

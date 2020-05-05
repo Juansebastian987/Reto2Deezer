@@ -33,7 +33,6 @@ public class TracksController implements View.OnClickListener, HTTPSWebUtilDomi.
         new Thread(() -> {
             String getRequest = "https://api.deezer.com/playlist/"+trackActivity.getId_playlist()+"/"+"tracks";
             utilDomi.GETrequest(Constants.TACK_CALLBACK, getRequest);
-            Log.e(">>>",getRequest);
         }).start();
     }
 
