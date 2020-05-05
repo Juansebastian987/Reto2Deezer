@@ -22,10 +22,12 @@ public class AdapterTrack extends RecyclerView.Adapter<AdapterTrack.ViewHolderSo
     private ArrayList<Track> tracks;
     private View.OnClickListener listener;
     private TrackActivity trackActivity;
+    private OnItemListener onItemListener;
 
-    public AdapterTrack(TrackActivity trackActivity) {
+    public AdapterTrack(TrackActivity trackActivity, OnItemListener onItemListener) {
         this.trackActivity = trackActivity;
         tracks = new ArrayList<>();
+        this.onItemListener = onItemListener;
     }
 
     @Override
@@ -40,7 +42,7 @@ public class AdapterTrack extends RecyclerView.Adapter<AdapterTrack.ViewHolderSo
     public ViewHolderSongs onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view= LayoutInflater.from(parent.getContext()).inflate(R.layout.iem_list_songs,null,false);
         view.setOnClickListener(this);
-        return new ViewHolderSongs(view);
+        return new ViewHolderSongs(view,onItemListener);
     }
 
     @Override
@@ -56,16 +58,24 @@ public class AdapterTrack extends RecyclerView.Adapter<AdapterTrack.ViewHolderSo
         return tracks.size();
     }
 
-    public class ViewHolderSongs extends RecyclerView.ViewHolder{
+    public class ViewHolderSongs extends RecyclerView.ViewHolder implements View.OnClickListener {
         TextView nombreSong,nameArtist, releaseDate;
         ImageView foto;
+        OnItemListener onItemListener;
 
-        public ViewHolderSongs(View itemView) {
+        public ViewHolderSongs(View itemView, OnItemListener onItemListener) {
             super(itemView);
             nombreSong= (TextView) itemView.findViewById(R.id.idNombreSong);
             nameArtist= (TextView) itemView.findViewById(R.id.idArtistSong);
             releaseDate = (TextView) itemView.findViewById(R.id.idDateSong);
             foto= (ImageView) itemView.findViewById(R.id.idImagenSong);
+            this.onItemListener = onItemListener;
+            itemView.setOnClickListener(this);
+        }
+
+        @Override
+        public void onClick(View v) {
+            onItemListener.OnItemListener(getAdapterPosition());
         }
     }
 
@@ -91,5 +101,9 @@ public class AdapterTrack extends RecyclerView.Adapter<AdapterTrack.ViewHolderSo
 
     public void setTrackActivity(TrackActivity trackActivity) {
         this.trackActivity = trackActivity;
+    }
+
+    public interface OnItemListener{
+        void OnItemListener(int position);
     }
 }

@@ -1,6 +1,8 @@
 package com.application.reto2deezer.model;
 
-public class Track {
+import java.io.Serializable;
+
+public class Track implements Serializable {
 
     private long id;
     private String title;

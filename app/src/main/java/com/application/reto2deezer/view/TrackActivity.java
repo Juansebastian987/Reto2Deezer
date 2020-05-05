@@ -19,7 +19,7 @@ import com.bumptech.glide.Glide;
 
 import java.util.ArrayList;
 
-public class TrackActivity extends AppCompatActivity{
+public class TrackActivity extends AppCompatActivity implements AdapterTrack.OnItemListener {
 
     private TextView namePlaylistTrack;
     private TextView descripcionPlaylistTrack;
@@ -47,7 +47,7 @@ public class TrackActivity extends AppCompatActivity{
 
         tracks = new ArrayList<>();
         recyclerViewTrack.setLayoutManager(new LinearLayoutManager(this));
-        adapterTrack = new AdapterTrack(this);
+        adapterTrack = new AdapterTrack(this,this);
         recyclerViewTrack.setAdapter(adapterTrack);
 
         Intent datos = getIntent();
@@ -147,5 +147,18 @@ public class TrackActivity extends AppCompatActivity{
 
     public void setTracks(ArrayList<Track> tracks) {
         this.tracks = tracks;
+    }
+
+    @Override
+    public void OnItemListener(int position) {
+
+        Intent i = new Intent(this, InfoSongActivity.class);
+
+        Bundle bundle = new Bundle();
+        bundle.putSerializable("trackSelect", getAdapterTrack().getTracks().get(position));
+        i.putExtras(bundle);
+
+        startActivity(i);
+
     }
 }

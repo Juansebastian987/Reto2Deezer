@@ -1,6 +1,8 @@
 package com.application.reto2deezer.model;
 
-public class Album {
+import java.io.Serializable;
+
+public class Album implements Serializable {
 
     private String title;
     private String cover;
