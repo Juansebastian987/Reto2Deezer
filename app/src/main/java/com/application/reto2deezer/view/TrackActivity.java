@@ -4,7 +4,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -26,6 +28,7 @@ public class TrackActivity extends AppCompatActivity{
     private ImageView imgPlayListTrack;
     private TracksController tracksController;
     private ArrayList<Track> tracks;
+    private String id_playlist;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,12 +39,26 @@ public class TrackActivity extends AppCompatActivity{
         descripcionPlaylistTrack = findViewById(R.id.descripcionPlaylistTrack);
         numberSongsPlaylistTrack = findViewById(R.id.numberSongsPlaylistTrack);
         numberFansPlaylistTrack = findViewById(R.id.numberFansPlaylistTrack);
+        recyclerViewTrack = findViewById(R.id.recyclerViewTrack);
 
         tracks = new ArrayList<>();
         recyclerViewTrack.setLayoutManager(new LinearLayoutManager(this));
         adapterTrack = new AdapterTrack(this);
         recyclerViewTrack.setAdapter(adapterTrack);
+
+        Intent datos = getIntent();
+        id_playlist = datos.getStringExtra("id")+"";
+        Log.e(">>>", id_playlist);
+
         tracksController = new TracksController(this);
+    }
+
+    public String getId_playlist() {
+        return id_playlist;
+    }
+
+    public void setId_playlist(String id_playlist) {
+        this.id_playlist = id_playlist;
     }
 
     public TextView getNamePlaylistTrack() {

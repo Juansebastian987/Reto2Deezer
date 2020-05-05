@@ -4,7 +4,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.EditText;
 import android.widget.ImageButton;
 
@@ -15,7 +17,7 @@ import com.application.reto2deezer.model.Playlist;
 
 import java.util.ArrayList;
 
-public class MainActivity extends AppCompatActivity{
+public class MainActivity extends AppCompatActivity implements AdapterPlaylist.OnItemListener {
 
     private ArrayList<Playlist> listPlaylist;
     private RecyclerView recyclerPlaylist;
@@ -36,7 +38,7 @@ public class MainActivity extends AppCompatActivity{
         recyclerPlaylist = (RecyclerView) findViewById(R.id.RecyclerId);
         recyclerPlaylist.setLayoutManager(new LinearLayoutManager(this));
 
-        adapterPlaylist = new AdapterPlaylist(this);
+        adapterPlaylist = new AdapterPlaylist(this, this);
         recyclerPlaylist.setAdapter(adapterPlaylist);
         mainController = new MainController(this);
     }
@@ -87,5 +89,12 @@ public class MainActivity extends AppCompatActivity{
 
     public void setEditText(EditText editText) {
         this.editText = editText;
+    }
+
+    @Override
+    public void OnItemListener(int position) {
+        Intent i = new Intent(this, TrackActivity.class);
+        i.putExtra("id", getAdapterPlaylist().getListPlaylist().get(position).getId());
+        startActivity(i);
     }
 }

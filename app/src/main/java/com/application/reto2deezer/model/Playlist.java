@@ -2,11 +2,11 @@ package com.application.reto2deezer.model;
 
 public class Playlist {
 
-    private long id;
+    private String id;
     private String title;
     private User user;
     private String description;
-    private int nb_tracks;
+    private String nb_tracks;
     private int fans;
     private String picture;
     private String tracklist;
@@ -14,7 +14,7 @@ public class Playlist {
     public Playlist(){
     }
 
-    public Playlist(long id, String title, User user, String description, int nb_tracks, int fans, String picture, String tracklist) {
+    public Playlist(String id, String title, User user, String description, String nb_tracks, int fans, String picture, String tracklist) {
         this.id = id;
         this.title = title;
         this.user = user;
@@ -25,11 +25,11 @@ public class Playlist {
         this.tracklist = tracklist;
     }
 
-    public long getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(String id) {
         this.id = id;
     }
 
@@ -57,11 +57,11 @@ public class Playlist {
         this.description = description;
     }
 
-    public int getNb_tracks() {
+    public String getNb_tracks() {
         return nb_tracks;
     }
 
-    public void setNb_tracks(int nb_tracks) {
+    public void setNb_tracks(String nb_tracks) {
         this.nb_tracks = nb_tracks;
     }
 

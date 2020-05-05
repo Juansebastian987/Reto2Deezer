@@ -11,12 +11,13 @@ import com.application.reto2deezer.model.PlaylistContainer;
 import com.application.reto2deezer.util.Constants;
 import com.application.reto2deezer.util.HTTPSWebUtilDomi;
 import com.application.reto2deezer.view.MainActivity;
+import com.application.reto2deezer.view.TrackActivity;
 import com.google.gson.Gson;
 
 import java.util.ArrayList;
 import java.util.Collections;
 
-public class MainController implements View.OnClickListener, HTTPSWebUtilDomi.OnResponseListener, AdapterView.OnItemClickListener{
+public class MainController implements View.OnClickListener, HTTPSWebUtilDomi.OnResponseListener, AdapterView.OnItemClickListener {
 
     private MainActivity mainActivity;
     private HTTPSWebUtilDomi utilDomi;
@@ -35,9 +36,7 @@ public class MainController implements View.OnClickListener, HTTPSWebUtilDomi.On
 
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-        new Thread(() -> {
 
-        }).start();
     }
 
     @Override

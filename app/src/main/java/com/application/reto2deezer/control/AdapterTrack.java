@@ -48,7 +48,7 @@ public class AdapterTrack extends RecyclerView.Adapter<AdapterTrack.ViewHolderSo
         holder.nombreSong.setText(tracks.get(position).getTitle());
         holder.nameArtist.setText(tracks.get(position).getArtist().getName());
         holder.releaseDate.setText(tracks.get(position).getRelease_date());
-        Glide.with(holder.foto.getContext()).load(tracks.get(position).getLink()).into(holder.foto);
+        Glide.with(holder.foto.getContext()).load(tracks.get(position).getAlbum().getCover()).into(holder.foto);
     }
 
     @Override
